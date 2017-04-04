@@ -41,8 +41,23 @@ $(document).ready(function() {
     var verticalPos = $('body').height() / 2;
     var horizontalPos = $('body').width() / window.dancers.length;
     var left = 15;
+    window.dancers.forEach(function(item, i) {
+      item.lineUp(verticalPos, left += horizontalPos/*, $('body').find('.dancer')[i]*/);
+    });
+  });
+
+  $('.growShrinkDancers').on('click', function(event) {
+
+    //var lineUpFunctionName = $(this).data('line-up-function-name');
+
+    //var lineUpFunction = window[lineUpFunctionName];
+
+    var verticalPos = $('body').height() / 2;
+    var horizontalPos = $('body').width() / window.dancers.length;
+    
     window.dancers.forEach(function(item) {
-      item.lineUp(verticalPos, left += horizontalPos);
+      var size = Math.floor((Math.random() * 200) + 100);
+      item.growShrink(size, size);
     });
   });
 

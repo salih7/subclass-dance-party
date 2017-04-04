@@ -4,7 +4,7 @@ var Dancer = function(top, left, timeBetweenSteps) {
   this.left = left;
   this.timeBetweenSteps = timeBetweenSteps;
   // use jQuery to create an HTML <span> tag
-  this.$node = $('<span class="dancer"></span>');
+  this.$node = $('<span class="dancer"><img src="mj.gif" alt="Moon walk" height="200" width="200"></span>');
   this.setPosition(top, left);
   this.step();
 };
@@ -31,8 +31,17 @@ Dancer.prototype.lineUp = function(top, left) {
     top: top,
     left: left
   };
-  //$('.dancer').animate(styleSettings);
-  this.setPosition(top, left);
+  this.$node.animate(styleSettings);
+  //this.setPosition(top, left);
+}
+
+Dancer.prototype.growShrink = function(width, height) {
+  var styleSettings = {
+    width: width,
+    height: height
+  };
+  this.$node.animate(styleSettings);
+  //this.setPosition(top, left);
 }
 
 /*
