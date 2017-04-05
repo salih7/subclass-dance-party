@@ -13,7 +13,7 @@ RandomDancer.prototype.step = function() {
   // See http://api.jquery.com/category/effects/ for this and
   // other effects you can use on a jQuery-wrapped html tag.
   this.oldStep(); 
-  this.$node.css({'transform' : 'rotate('+ Math.floor((Math.random() * 360) + 0) +'deg)'});
+  this.$node.css({'transform' : 'rotate('+ Math.floor((Math.random() * 180) + 0) +'deg)'});
 };
 
 RandomDancer.prototype.oldStep = Dancer.prototype.step;

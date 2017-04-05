@@ -33,7 +33,7 @@ body, a:link, a:visited, a:active{
     height: 200px;
     text-align: center;
     font: normal 1em Arial;
-    position: absolute;
+    position: fixed;
     top: 50px;
     left: 50px;
 }

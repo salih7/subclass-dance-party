@@ -36,6 +36,16 @@ Dancer.prototype.lineUp = function(top, left) {
 
 }
 
+Dancer.prototype.rePosition = function(width, height) {
+  var styleSettings = {
+    width: width,
+    height: height
+  };
+  this.$node.animate(styleSettings);
+  //this.setPosition(top, left);
+
+}
+
 
 /*
 Dancer.prototype.circleTrain = function(top, left) {

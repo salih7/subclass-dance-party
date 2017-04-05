@@ -4,15 +4,9 @@ $(document).ready(function() {
   var horizontalPos = $('body').width() / window.dancers.length;
   
 
-  function setDancer(dancerMakerFunctionName) {
-    // get the maker function for the kind of dancer we're supposed to make
-
-  }
-
-
   $('.addDancerButton').on('click', function(event) {
     var curDiv = window.dancers.length;
-
+    
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
      * As long as the "data-dancer-maker-function-name" attribute of a
@@ -27,43 +21,44 @@ $(document).ready(function() {
      * to the stage.
      */
     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
-    setDancer.call(this, dancerMakerFunctionName);
-
     var dancerMakerFunction = window[dancerMakerFunctionName];
-
-
-
-    // make a dancer with a random position
-    $('body').append('<div id="' + curDiv + '"></div>');
 
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
       Math.floor((Math.random() * 2000) + 1000)
     );
-    $('#' + curDiv++).append(dancer.$node);
+    if(curDiv === 0) {
+      $('#0').append(dancer.$node);
+    } else {
+      $('body').append(dancer.$node);
+    }
     
     window.dancers.push(dancer);
   });
 
 
-  // $('div').on('mouseover', function(event) {
-  //   alert('here is here');
-  // });
+  $('div#0').on('mouseenter', function(event) {
+    $('#0 > span').html('<span class="dancer"><img class="dancer" src="magic.gif" alt="Magic dance"></span>');
+  });
+
+  $('div#0').on('mouseleave', function(event) {
+    $('#0 > span').html('<span class="dancer"><img class="dancer" src="mj.gif" alt="Moon walk"></span>');
+  });
   
 
   $('.lineUpDancers').on('click', function(event) {
     var left = 15;
-    window.dancers.forEach(function(item, i) {
+    window.dancers.forEach(function(item) {
       item.lineUp(verticalPos, left += horizontalPos);
     });
   });
 
 
-  $('.growShrinkDancers').on('click', function(event) {
+  $('.rePositionDancers').on('click', function(event) {
     window.dancers.forEach(function(item) {
-      var size = Math.floor((Math.random() * 400) + 200);
-      item.lineUp(size, size);
+      var size = Math.floor((Math.random() * 500) + 200);
+      item.rePosition(size, size);
     });
   });
 
