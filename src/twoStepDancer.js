@@ -1,12 +1,12 @@
-var BlinkyDancer = function(top, left, timeBetweenSteps) {
+var TwoStepDancer = function(top, left, timeBetweenSteps) {
   Dancer.call(this, top, left, timeBetweenSteps);
 };
 
-BlinkyDancer.prototype = Object.create(Dancer.prototype);
+TwoStepDancer.prototype = Object.create(Dancer.prototype);
 
-BlinkyDancer.prototype.constructor = BlinkyDancer;
+TwoStepDancer.prototype.constructor = TwoStepDancer;
 
-BlinkyDancer.prototype.step = function() {
+TwoStepDancer.prototype.step = function() {
   //setTimeout(Dancer.prototype.step, this.timeBetweenSteps);
   //debugger;
   // toggle() is a jQuery method to show/hide the <span> tag.
@@ -16,4 +16,4 @@ BlinkyDancer.prototype.step = function() {
   this.$node.toggle();
 };
 
-BlinkyDancer.prototype.oldStep = Dancer.prototype.step;
+TwoStepDancer.prototype.oldStep = Dancer.prototype.step;
